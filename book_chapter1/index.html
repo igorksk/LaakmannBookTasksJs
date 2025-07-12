@@ -3,16 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <title>JS Tasks</title>
+  <style>
+    .button-column {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start; /* align to the left */
+      gap: 0.5em;
+      margin-top: 1em;
+    }
+
+    .button-column button {
+      width: 150px; /* fixed shorter width */
+    }
+  </style>
 </head>
 <body>
   <h1>JavaScript Tasks</h1>
 
-  <input type="text" id="inputString" placeholder="Enter string to check" />
-  <button onclick="task1()">Check Unique Symbols</button>
+  <input type="text" id="inputString1" placeholder="Enter string 1 to check" />
+  <input type="text" id="inputString2" placeholder="Enter string 2 to check" />
+
+  <div class="button-column">
+    <button onclick="task1()">Check Unique (string1)</button>
+    <button onclick="task2()">Check Permutation (string1), (string2)</button>
+  </div>
 
   <pre id="output"></pre>
 
   <!-- Load external JS task scripts -->
   <script src="task1_uniqueSymbols.js"></script>
+  <script src="task2_permutation_string.js"></script>
 </body>
 </html>

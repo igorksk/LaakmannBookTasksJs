@@ -21,7 +21,7 @@ function uniqueWithoutDataStructures(str) {
   }
   
   function task1() {
-    const str = document.getElementById("inputString").value;
+    const str = document.getElementById("inputString1").value;
     let result = "";
   
     if (uniqueWithoutDataStructures(str)) {
