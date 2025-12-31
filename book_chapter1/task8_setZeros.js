@@ -1,5 +1,5 @@
 function setZeros(matrix) {
-    if (!matrix || matrix.length === 0) return;
+    if (!matrix || matrix.length === 0) return matrix;
 
     const rows = matrix.length;
     const cols = matrix[0].length;
@@ -24,7 +24,10 @@ function setZeros(matrix) {
             }
         }
     }
+    return matrix;
 }
+
+window.setZeros = setZeros;
 
 function task8() {
     const input = document.getElementById("inputMatrix").value;

@@ -17,7 +17,10 @@ function rotateMatrix(matrix) {
             matrix[i][last] = top;
         }
     }
+    return matrix;
 }
+
+window.rotateMatrix = rotateMatrix;
 
 function task7() {
     const input = document.getElementById("inputMatrix").value;

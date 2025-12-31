@@ -28,9 +28,4 @@ function isPalindromePermutation(str) {
     return oddCount < 2;
 }
   
-  function task4() {
-    const str = document.getElementById("inputString1").value;
-    let result = isPalindromePermutation(str) ;
-  
-    document.getElementById("output").textContent = result;
-  }
+window.isPalindromePermutation = isPalindromePermutation;

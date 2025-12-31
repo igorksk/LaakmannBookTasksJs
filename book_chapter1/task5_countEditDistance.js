@@ -1,4 +1,8 @@
-function oneEditDIstanceChecker(str1, str2) {
+function countEditDistance(str1, str2) {
+  return oneEditDIstanceChecker(str1, str2) ? "Strings are one edit distance apart" : "Strings are NOT one edit distance apart";
+}
+
+window.countEditDistance = countEditDistance;
   if (Math.abs(str1.length - str2.length) > 1) {
     return false;
   }

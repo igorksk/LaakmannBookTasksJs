@@ -20,21 +20,9 @@ function uniqueWithoutDataStructures(str) {
     return true;
   }
   
-  function task1() {
-    const str = document.getElementById("inputString1").value;
-    let result = "";
-  
-    if (uniqueWithoutDataStructures(str)) {
-      result += "Symbols unique by first check\n";
-    } else {
-      result += "Symbols not unique by first check\n";
-    }
-  
-    if (uniqueUsingDictionary(str)) {
-      result += "Symbols unique by second check\n";
-    } else {
-      result += "Symbols not unique by second check\n";
-    }
-  
-    document.getElementById("output").textContent = result;
-  }
+function isUniqueSymbols(str) {
+  // Use dictionary method for UI
+  return uniqueUsingDictionary(str) ? "Symbols are unique" : "Symbols are not unique";
+}
+
+window.isUniqueSymbols = isUniqueSymbols;

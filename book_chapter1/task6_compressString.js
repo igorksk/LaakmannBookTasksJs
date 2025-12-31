@@ -19,8 +19,4 @@ function compressString(str) {
     return compressed.length < str.length ? compressed : str;
 }
 
-function task6() {
-      const str = document.getElementById('inputString1').value;
-      const result = compressString(str);
-      document.getElementById('output').textContent = `Compressed: ${result}`;
-}
+window.compressString = compressString;

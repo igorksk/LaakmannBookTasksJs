@@ -1,4 +1,4 @@
-function isRotation(str1, str2) {
+window.isRotation = isRotation;
     if (str1.length !== str2.length) {
         return false;
     }

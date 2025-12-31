@@ -20,16 +20,8 @@
     return true;
   }
   
-  function task2() {
-    const str1 = document.getElementById("inputString1").value;
-    const str2 = document.getElementById("inputString2").value;
-    let result = "";
-  
-    if (checkIfPermutations(str1, str2)) {
-      result += "Strings are permutations\n";
-    } else {
-      result += "Strings are not permutations\n";
-    }
-  
-    document.getElementById("output").textContent = result;
-  }
+function isPermutationString(str1, str2) {
+  return checkIfPermutations(str1, str2) ? "Strings are permutations" : "Strings are not permutations";
+}
+
+window.isPermutationString = isPermutationString;
