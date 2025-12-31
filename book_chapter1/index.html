@@ -4,45 +4,116 @@
   <meta charset="UTF-8" />
   <title>JS Tasks</title>
   <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f6f8fa;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 700px;
+      margin: 2em auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      padding: 2em;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #2d3748;
+    }
+    .card {
+      background: #f1f5f9;
+      border-radius: 8px;
+      padding: 1.5em;
+      margin-bottom: 1.5em;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .inputs {
+      display: flex;
+      gap: 1em;
+      margin-bottom: 1em;
+    }
+    input, textarea {
+      font-size: 1em;
+      padding: 0.5em;
+      border-radius: 4px;
+      border: 1px solid #cbd5e1;
+      background: #fff;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    textarea {
+      resize: vertical;
+    }
     .button-column {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start; /* align to the left */
+      flex-wrap: wrap;
       gap: 0.5em;
-      margin-top: 1em;
+      margin-bottom: 1em;
     }
-
     .button-column button {
-      width: 150px; /* fixed shorter width */
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 0.5em 1em;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.2s;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .button-column button:hover {
+      background: #1e40af;
+    }
+    .output, .matrix-output {
+      background: #e0e7ef;
+      border-radius: 4px;
+      padding: 1em;
+      min-height: 2em;
+      font-family: 'Fira Mono', 'Consolas', monospace;
+      color: #334155;
+      margin-top: 0.5em;
+      white-space: pre-wrap;
+    }
+    .error {
+      color: #dc2626;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <h1>JavaScript Tasks</h1>
-
-  <input type="text" id="inputString1" placeholder="Enter string 1 to check" />
-  <input type="text" id="inputString2" placeholder="Enter string 2 to check" />
-
-  <div class="button-column">
-    <button onclick="task1()">Check Unique (string1)</button>
-    <button onclick="task2()">Check Permutation (string1), (string2)</button>
-    <button onclick="task3()">Replace spaces example</button>
-    <button onclick="task4()">Check Palindrome Permutation (string1)</button>
-    <button onclick="task5()">Count Edit Distance (string1), (string2)</button>
-    <button onclick="task6()">Compress String (string1)</button>
-    <button onclick="task9()">Is Rotation (string1), (string2)</button>
-  </div>
-
-  <pre id="output"></pre>
-
-  <h2>Matrix Tasks</h2>
-  <textarea id="inputMatrix" rows="5" cols="30" placeholder="Enter matrix, rows separated by newlines, numbers by spaces">1 2 3
+  <div class="container">
+    <h1>JavaScript Tasks</h1>
+    <div class="card">
+      <h2>String Tasks</h2>
+      <div class="inputs">
+        <input type="text" id="inputString1" placeholder="Enter string 1" />
+        <input type="text" id="inputString2" placeholder="Enter string 2 (if needed)" />
+      </div>
+      <div class="button-column">
+        <button onclick="runTask(1)">Check Unique</button>
+        <button onclick="runTask(2)">Check Permutation</button>
+        <button onclick="runTask(3)">Replace Spaces</button>
+        <button onclick="runTask(4)">Palindrome Permutation</button>
+        <button onclick="runTask(5)">Edit Distance</button>
+        <button onclick="runTask(6)">Compress String</button>
+        <button onclick="runTask(9)">Is Rotation</button>
+      </div>
+      <div id="output" class="output"></div>
+    </div>
+    <div class="card">
+      <h2>Matrix Tasks</h2>
+      <textarea id="inputMatrix" rows="5" cols="30" placeholder="Enter matrix, rows separated by newlines, numbers by spaces">1 2 3
 4 5 6
 7 8 9</textarea>
-  <br />
-  <button onclick="task7()">Rotate Matrix</button>
-  <button onclick="task8()">Set Zeros</button>
-  <pre id="matrixOutput"></pre>
+      <div class="button-column">
+        <button onclick="runTask(7)">Rotate Matrix</button>
+        <button onclick="runTask(8)">Set Zeros</button>
+      </div>
+      <div id="matrixOutput" class="matrix-output"></div>
+    </div>
+  </div>
 
   <!-- Load external JS task scripts -->
   <script src="task1_uniqueSymbols.js"></script>
@@ -54,5 +125,80 @@
   <script src="task7_rotateMatrix.js"></script>
   <script src="task8_setZeros.js"></script>
   <script src="task9_isRotation.js"></script>
+  <script>
+    // Helper to show output and errors
+    function showOutput(result, isMatrix = false, error = false) {
+      const el = document.getElementById(isMatrix ? 'matrixOutput' : 'output');
+      if (error) {
+        el.innerHTML = `<span class='error'>${result}</span>`;
+      } else {
+        el.textContent = result;
+      }
+    }
+
+    // Main runner for all tasks
+    function runTask(taskNum) {
+      const s1 = document.getElementById('inputString1').value;
+      const s2 = document.getElementById('inputString2').value;
+      const matrixInput = document.getElementById('inputMatrix').value;
+      try {
+        let result = '';
+        switch (taskNum) {
+          case 1:
+            if (!s1) return showOutput('Please enter string 1.', false, true);
+            result = isUniqueSymbols(s1);
+            break;
+          case 2:
+            if (!s1 || !s2) return showOutput('Enter both strings.', false, true);
+            result = isPermutationString(s1, s2);
+            break;
+          case 3:
+            if (!s1) return showOutput('Please enter string 1.', false, true);
+            result = replaceSpaces(s1);
+            break;
+          case 4:
+            if (!s1) return showOutput('Please enter string 1.', false, true);
+            result = isPalindromePermutation(s1);
+            break;
+          case 5:
+            if (!s1 || !s2) return showOutput('Enter both strings.', false, true);
+            result = countEditDistance(s1, s2);
+            break;
+          case 6:
+            if (!s1) return showOutput('Please enter string 1.', false, true);
+            result = compressString(s1);
+            break;
+          case 7:
+            if (!matrixInput) return showOutput('Enter matrix input.', true, true);
+            result = rotateMatrix(parseMatrix(matrixInput));
+            showOutput(formatMatrix(result), true);
+            return;
+          case 8:
+            if (!matrixInput) return showOutput('Enter matrix input.', true, true);
+            result = setZeros(parseMatrix(matrixInput));
+            showOutput(formatMatrix(result), true);
+            return;
+          case 9:
+            if (!s1 || !s2) return showOutput('Enter both strings.', false, true);
+            result = isRotation(s1, s2);
+            break;
+          default:
+            showOutput('Unknown task.', false, true);
+            return;
+        }
+        showOutput(result);
+      } catch (e) {
+        showOutput('Error: ' + e.message, taskNum === 7 || taskNum === 8, true);
+      }
+    }
+
+    // Matrix helpers
+    function parseMatrix(str) {
+      return str.trim().split(/\n|\r/).map(row => row.trim().split(/\s+/).map(Number));
+    }
+    function formatMatrix(matrix) {
+      return matrix.map(row => row.join(' ')).join('\n');
+    }
+  </script>
 </body>
 </html>
