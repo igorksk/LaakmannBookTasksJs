@@ -1,26 +1,4 @@
-function replaceSpaces(str) {
-    // Convert string to array for in-place edit
-    const strArray = str.split('');
-    const trueLength = strArray.length;
-    let spaceCount = 0;
-    for (let i = 0; i < trueLength; i++) {
-        if (strArray[i] === ' ') spaceCount++;
-    }
-    let newIndex = trueLength + spaceCount * 2;
-    const resultArray = new Array(newIndex);
-    for (let i = trueLength - 1; i >= 0; i--) {
-        if (strArray[i] === ' ') {
-            resultArray[--newIndex] = '0';
-            resultArray[--newIndex] = '2';
-            resultArray[--newIndex] = '%';
-        } else {
-            resultArray[--newIndex] = strArray[i];
-        }
-    }
-    return resultArray.join('');
-}
-
-window.replaceSpaces = replaceSpaces;
+function replaceSpaces(strArray, trueLength) {
     let spaceCount = 0;
 
     // Count spaces in the "true" portion of the string
@@ -52,6 +30,8 @@ window.replaceSpaces = replaceSpaces;
 
     return strArray;
 }
+
+window.replaceSpaces = replaceSpaces;
 
 function task3() {
     let input = ['M', 'r', ' ', 'J', 'o', 'h', 'n', ' ', 'S', 'm', 'i', 't', 'h', '', '', '', '', '', '', ''];

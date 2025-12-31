@@ -1,4 +1,4 @@
-window.isRotation = isRotation;
+function isRotation(str1, str2) {
     if (str1.length !== str2.length) {
         return false;
     }
@@ -6,6 +6,8 @@ window.isRotation = isRotation;
     const concatenated = str1 + str1;
     return concatenated.includes(str2);
 }
+
+window.isRotation = isRotation;
 
 function task9() {
     const str1 = document.getElementById("inputString1").value;

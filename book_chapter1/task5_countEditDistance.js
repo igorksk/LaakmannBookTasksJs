@@ -1,8 +1,4 @@
 function countEditDistance(str1, str2) {
-  return oneEditDIstanceChecker(str1, str2) ? "Strings are one edit distance apart" : "Strings are NOT one edit distance apart";
-}
-
-window.countEditDistance = countEditDistance;
   if (Math.abs(str1.length - str2.length) > 1) {
     return false;
   }
@@ -33,6 +29,8 @@ window.countEditDistance = countEditDistance;
 
   return true;
 }
+
+window.countEditDistance = countEditDistance;
 
 function task5() {
   const str1 = document.getElementById("inputString1").value;
