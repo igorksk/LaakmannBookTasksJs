@@ -1,3 +1,8 @@
+/*
+Task 9: Check if one string is a rotation of another by using
+the trick: s2 is a substring of s1+s1 if they are rotations.
+*/
+
 function isRotation(str1, str2) {
     if (str1.length !== str2.length) {
         return false;

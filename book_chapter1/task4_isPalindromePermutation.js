@@ -1,3 +1,8 @@
+/*
+Task 4: Check whether a string is a permutation of a palindrome.
+Ignores spaces and is case-insensitive; counts character occurrences.
+*/
+
 function isPalindromePermutation(str) {
     const dictionary = {};
 

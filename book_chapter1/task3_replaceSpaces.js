@@ -1,3 +1,8 @@
+/*
+Task 3: Replace spaces in a character array with '%20' in-place given the "true" length.
+This mirrors the URLify problem from common interview exercises.
+*/
+
 function replaceSpaces(strArray, trueLength) {
     let spaceCount = 0;
 

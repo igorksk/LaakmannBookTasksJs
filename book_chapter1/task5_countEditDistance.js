@@ -1,3 +1,8 @@
+/*
+Task 5: Check whether two strings are one edit (insert, remove, or replace) away.
+Returns a boolean indicating whether the edit distance is at most one.
+*/
+
 function countEditDistance(str1, str2) {
   if (Math.abs(str1.length - str2.length) > 1) {
     return false;

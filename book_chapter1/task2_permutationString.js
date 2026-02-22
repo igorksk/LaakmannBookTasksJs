@@ -1,4 +1,9 @@
 
+/*
+Task 2: Determine if two strings are permutations of each other.
+Counts character occurrences (assumes ASCII) and compares counts.
+*/
+
   function checkIfPermutations(str1, str2) {
     if (str1.length !== str2.length) {
         return false;

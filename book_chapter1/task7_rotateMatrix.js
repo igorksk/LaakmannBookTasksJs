@@ -1,3 +1,8 @@
+/*
+Task 7: Rotate an N x N matrix 90 degrees in place (clockwise).
+Performs layer-by-layer swaps to rotate the matrix with O(1) extra space.
+*/
+
 function rotateMatrix(matrix) {
     const n = matrix.length;
     for (let layer = 0; layer < n / 2; layer++) {

@@ -1,3 +1,9 @@
+/*
+Task 6: Compress a string by replacing consecutive repeated characters
+with the character followed by the count (e.g., aabcc -> a2b1c2).
+Returns the original string if compression doesn't make it shorter.
+*/
+
 function compressString(str) {
     if (str.length === 0) return "";
 

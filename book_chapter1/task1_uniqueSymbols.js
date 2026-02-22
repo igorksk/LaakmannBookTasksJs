@@ -1,3 +1,9 @@
+/*
+Task 1: Check if a string has all unique characters.
+Provides two implementations: one without extra data structures (O(n^2)),
+and one using a dictionary/object for O(n) time.
+*/
+
 function uniqueWithoutDataStructures(str) {
     for (let i = 0; i < str.length; i++) {
       for (let j = i + 1; j < str.length; j++) {

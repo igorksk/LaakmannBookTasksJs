@@ -1,3 +1,8 @@
+/*
+Task 8: If an element in an MxN matrix is zero, set its entire row and column to zero.
+Finds zero rows/columns first, then zeros them out in a second pass.
+*/
+
 function setZeros(matrix) {
     if (!matrix || matrix.length === 0) return matrix;
 
